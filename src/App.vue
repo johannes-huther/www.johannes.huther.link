@@ -3,7 +3,7 @@
     <header style="display: flex">
       <img
         class="centered"
-        src="../img/johannes-huther-icon.svg"
+        src="../public/img/johannes-huther-icon.svg"
         width="128px"
         alt="Icon of Johannes Huther"
       />
