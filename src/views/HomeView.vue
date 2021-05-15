@@ -20,6 +20,7 @@ export default class Home extends Vue {}
 
 <style lang="scss" scoped>
 .centered {
+  text-align: center;
   margin-right: auto;
   margin-left: auto;
 }
