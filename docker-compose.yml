@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  app:
+    ports:
+      - 3080:3080
+    build: .
+    image: registry.gitlab.huther.link/johannes_huther/www.johannes.huther.link
