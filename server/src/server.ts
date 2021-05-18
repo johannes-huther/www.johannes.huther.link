@@ -10,6 +10,12 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../../dist/index.html"));
 });
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
+});
+
+process.on("SIGTERM", () => {
+  server.close(() => {
+    console.log("Server stopped.");
+  });
 });
