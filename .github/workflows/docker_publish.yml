@@ -51,3 +51,11 @@ jobs:
         run: |
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+      - name: Invoke deployment hook
+        uses: johannes-huther/workflow-webhook@custom-features
+        env:
+          webhook_url: ${{ secrets.WEBHOOK_URL }}
+          webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
+          verify_ssl: true
+          verbose: false
+          silent: false
