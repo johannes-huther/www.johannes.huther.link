@@ -2,6 +2,7 @@
   "name": "www.johannes.huther.link",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "serve": "concurrently \"vue-cli-service serve\" \"cd server && npm run serve\"",
     "build": "concurrently \"vue-cli-service build\" \"cd server && tsc\"",
