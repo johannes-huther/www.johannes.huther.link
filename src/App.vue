@@ -25,8 +25,10 @@
               small
               href="https://github.com/johannes-huther/www.johannes.huther.link"
               id="gh-link"
+              color="#24292e"
+              text-color="white"
             >
-              <v-icon>mdi-github</v-icon>
+              <v-icon class="pr-1">mdi-github</v-icon>
               GitHub
             </v-chip>
           </span>
@@ -65,7 +67,7 @@ export default class App extends Vue {}
 }
 
 #gh-link {
-  padding: 0 2px 0 0;
+  padding: 2px 6px 2px 0;
   margin: 0;
 }
 </style>
