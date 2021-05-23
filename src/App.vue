@@ -11,6 +11,28 @@
     <v-main>
       <router-view />
     </v-main>
+    <v-footer>
+      <v-col>
+        <v-row class="justify-center">
+          <span>
+            The source code of this website is licensed under the MIT license.
+          </span>
+        </v-row>
+        <v-row class="justify-center">
+          <span>
+            View the source code and license on
+            <v-chip
+              small
+              href="https://github.com/johannes-huther/www.johannes.huther.link"
+              id="gh-link"
+            >
+              <v-icon>mdi-github</v-icon>
+              GitHub
+            </v-chip>
+          </span>
+        </v-row>
+      </v-col>
+    </v-footer>
   </v-app>
 </template>
 
@@ -40,5 +62,10 @@ export default class App extends Vue {}
 .centered {
   margin-right: auto;
   margin-left: auto;
+}
+
+#gh-link {
+  padding: 0 2px 0 0;
+  margin: 0;
 }
 </style>
