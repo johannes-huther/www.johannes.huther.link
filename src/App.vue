@@ -11,7 +11,7 @@
     <v-main>
       <router-view />
     </v-main>
-    <v-footer>
+    <v-footer class="footer">
       <v-col>
         <v-row class="justify-center">
           <span> Copyright © 2021 Johannes Huther </span>
@@ -67,6 +67,10 @@ export default class App extends Vue {}
 .centered {
   margin-right: auto;
   margin-left: auto;
+}
+
+.footer {
+  font-size: 12px;
 }
 
 #gh-link {
