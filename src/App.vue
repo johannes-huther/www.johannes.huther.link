@@ -14,6 +14,9 @@
     <v-footer>
       <v-col>
         <v-row class="justify-center">
+          <span> Copyright © 2021 Johannes Huther </span>
+        </v-row>
+        <v-row class="justify-center">
           <span>
             The source code of this website is licensed under the MIT license.
           </span>
