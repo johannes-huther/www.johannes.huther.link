@@ -12,11 +12,10 @@ COPY public ./public/
 COPY src ./src/
 # Copy compilation config files.
 COPY .eslintrc.js babel.config.js tsconfig.json ./
-# Build frontend.
-RUN npm run build
-# Copy backend src and compile.
+# Copy server src.
 COPY server ./server/
-RUN cd server && tsc
+# Build everything.
+RUN npm run build
 
 # Add group and user
 RUN addgroup --system webserver --gid 1081 && useradd --system -g webserver webserver --uid 1081
