@@ -17,6 +17,13 @@ COPY server ./server/
 # Build everything.
 RUN npm run build
 
+# Store git commit and ref.
+RUN mkdir data
+ARG git_sha
+ARG git_ref
+RUN echo $git_sha > data/git_sha.txt
+RUN echo $git_ref > data/git_ref.txt
+
 # Add group and user
 RUN addgroup --system webserver --gid 1081 && useradd --system -g webserver webserver --uid 1081
 USER webserver

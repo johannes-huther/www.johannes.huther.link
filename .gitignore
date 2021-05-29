@@ -5,6 +5,7 @@ dist
 src/**/*.js*
 tests/**/*.js*
 
+data
 
 # local env files
 .env.local
