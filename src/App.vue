@@ -41,11 +41,15 @@
       </v-col>
     </v-footer>
   </v-app>
+  <v-app v-else class="justify-center align-center">
+    <LoadingIcon></LoadingIcon>
+  </v-app>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import GitHubVersionLink from "@/components/GitHubVersionLink.vue";
+import LoadingIcon from "@/components/LoadingIcon.vue";
 
 /**
  * The link to the GitHub repository.
@@ -56,7 +60,7 @@ const GIT_ROOT = "https://github.com/johannes-huther/www.johannes.huther.link";
  * The main {@link Vue}-View that contains the App.
  */
 @Component({
-  components: { GitHubVersionLink },
+  components: { LoadingIcon, GitHubVersionLink },
   metaInfo: {
     titleTemplate: "%s - Johannes Huther",
   },
@@ -95,8 +99,7 @@ export default class App extends Vue {
 }
 
 .centered {
-  margin-right: auto;
-  margin-left: auto;
+  margin: auto;
 }
 
 .footer {
