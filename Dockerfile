@@ -22,4 +22,4 @@ RUN addgroup --system webserver --gid 1081 && useradd --system -g webserver webs
 USER webserver
 
 EXPOSE 3080
-CMD ["node", "server/dist/server.js"]
+CMD ["npm", "run", "start"]
