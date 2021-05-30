@@ -48,5 +48,10 @@ npm run serve
 ```
 Open `http://[your ip]:8080` in your browser.
 
+## Deployment
+The website is deployed to [`www.johannes.huther.link`](https://www.johannes.huther.link) as soon as a new release is published.
+
+A staging build is deployed to [`www.staging.johannes.huther.link`](https://www.staging.johannes.huther.link) with every push to the `master` branch.
+
 ## Licensing
 This project is licensed under the MIT License. See also [`LICENSE`](LICENSE).
