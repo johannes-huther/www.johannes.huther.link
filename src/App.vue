@@ -31,7 +31,7 @@
               color="#24292e"
               text-color="white"
             >
-              <v-icon class="pr-1">mdi-github</v-icon>
+              <v-icon class="pr-1 medium_icon">mdi-github</v-icon>
               GitHub
             </v-chip>
             <GitHubVersionLink :git-root="GIT_ROOT" :version="version">
@@ -107,6 +107,10 @@ export default class App extends Vue {
 }
 
 #gh-link {
+  .medium_icon {
+    font-size: 24px;
+    width: fit-content;
+  }
   padding: 2px 6px 2px 0;
   margin: 0;
 }
