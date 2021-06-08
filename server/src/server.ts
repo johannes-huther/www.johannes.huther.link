@@ -1,33 +1,21 @@
 import express from "express";
 import path from "path";
-import fs from "fs";
+
+import dotenv from "dotenv";
+import dotenvExpand from "dotenv-expand";
+dotenvExpand(dotenv.config({ path: "../.env" }));
+dotenvExpand(dotenv.config({ path: "../.env.local" }));
+
+import { getVersion } from "../../common/version";
 
 const app = express();
 const port = 3080;
 
-app.use(express.static(path.join(__dirname, "../../dist")));
+app.use(express.static(path.join(__dirname, "../../../../dist")));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../../dist/index.html"));
+  res.sendFile(path.join(__dirname, "../../../../dist/index.html"));
 });
-
-/**
- * A regular Expression that matches git ref's that are tags.
- */
-const VERSION_REGEXP = new RegExp("(?<=refs\\/tags\\/).*");
-
-/**
- * Returns the current version, either a release version (e.g. `v0.1.0`) or a short commit SHA.
- */
-function getVersion(): string {
-  const ref = fs.readFileSync("../data/git_ref.txt").toString();
-  let match;
-  if ((match = ref.match(VERSION_REGEXP)) !== null) {
-    return match[0];
-  } else {
-    return fs.readFileSync("../data/git_sha.txt").toString().substr(0, 7);
-  }
-}
 
 /**
  * The current version of this software. Either a release version (e.g. `v0.1.0`) or a short commit SHA.

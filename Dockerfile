@@ -10,6 +10,7 @@ RUN cd server && npm install
 # Copy app source.
 COPY public ./public/
 COPY src ./src/
+COPY common ./common/
 # Copy compilation config files.
 COPY .eslintrc.js babel.config.js tsconfig.json ./
 # Copy server src.
@@ -18,11 +19,10 @@ COPY server ./server/
 RUN npm run build
 
 # Store git commit and ref.
-RUN mkdir data
 ARG git_sha
 ARG git_ref
-RUN echo $git_sha > data/git_sha.txt
-RUN echo $git_ref > data/git_ref.txt
+RUN echo "VUE_APP_GIT_SHA=$git_sha" > .env
+RUN echo "VUE_APP_GIT_REF=$git_ref" >> .env
 
 # Add group and user
 RUN addgroup --system webserver --gid 1081 && useradd --system -g webserver webserver --uid 1081

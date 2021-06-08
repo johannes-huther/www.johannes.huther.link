@@ -6,7 +6,7 @@
   "scripts": {
     "serve": "concurrently \"vue-cli-service serve\" \"cd server && npm run serve\"",
     "build": "concurrently \"vue-cli-service build\" \"cd server && tsc\"",
-    "start": "cd server && node dist/server.js",
+    "start": "cd server && node dist/server/src/server.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },

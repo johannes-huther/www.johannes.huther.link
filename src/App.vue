@@ -50,6 +50,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import GitHubVersionLink from "@/components/GitHubVersionLink.vue";
 import LoadingIcon from "@/components/LoadingIcon.vue";
+import { getVersion } from "../common/version";
 
 /**
  * The link to the GitHub repository.
@@ -72,20 +73,12 @@ export default class App extends Vue {
   /**
    * A boolean indicating whether all API calls have been finished (`false`) or if they are still loading.
    */
-  loading = true;
+  loading = false;
 
   /**
    * The current version of this software. Either a release version (e.g. `v0.1.0`) or a short commit SHA.
    */
-  version!: string;
-
-  /**
-   * Fetches the version from the API and sets {@link #loading} to false.
-   */
-  async mounted(): Promise<void> {
-    this.version = (await (await fetch("/api/version")).json())["version"];
-    this.loading = false;
-  }
+  version = getVersion();
 }
 </script>
 
