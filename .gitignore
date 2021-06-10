@@ -7,6 +7,8 @@ tests/**/*.js*
 
 data
 
+*.local.*
+
 # local env files
 .env.local
 .env.*.local

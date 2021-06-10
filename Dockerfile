@@ -1,8 +1,8 @@
-FROM node
+FROM node AS builder
 RUN npm install -g typescript
 # Set working directory.
 WORKDIR /usr/app
-# Copy package.json and package-lock.json for frontend, backend and proxy and install dependencies, before copying the rest. This is more efficient as only changes to these files require a new npm install.
+# Copy package.json and package-lock.json for frontend and backend and install dependencies, before copying the rest. This is more efficient as only changes to these files require a new npm install.
 COPY package*.json ./
 RUN npm install
 COPY server/package*.json ./server/
@@ -23,9 +23,21 @@ RUN echo "VUE_APP_GIT_REF=$git_ref" >> ./.env
 # Build everything.
 RUN npm run build
 
+FROM node:16-alpine
+# Set working directory.
+WORKDIR /usr/app
+# Copy package.json and package-lock.json for backend and install production dependencies.
+COPY server/package*.json ./server/
+RUN cd server && npm install --only=prod
+
+COPY --from=builder /usr/app/dist dist
+COPY --from=builder /usr/app/server/dist server/dist
+COPY --from=builder /usr/app/.env ./
+
 # Add group and user
-RUN addgroup --system webserver --gid 1081 && useradd --system -g webserver webserver --uid 1081
+RUN addgroup -S webserver -g 1081 && adduser -S webserver -G webserver -u 1081
 USER webserver
 
 EXPOSE 3080
-CMD ["npm", "run", "start"]
+WORKDIR ./server
+CMD ["node", "dist/server/src/server.js"]
