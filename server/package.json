@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "dotenv": "^10.0.0",
-    "dotenv-expand": "^5.1.0",
+    "dotenv-expand": "^8.0.1",
     "express": "^4.17.1"
   }
 }
